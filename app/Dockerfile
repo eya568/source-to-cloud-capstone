@@ -5,6 +5,7 @@ WORKDIR /app
 # curl est nécessaire ici : le healthcheck défini dans docker-compose.yml
 # s'exécute À L'INTÉRIEUR du conteneur, il a donc besoin de son propre curl.
 RUN apt-get update && \
+    apt-get upgrade -y && \
     apt-get install -y --no-install-recommends curl && \
     rm -rf /var/lib/apt/lists/*
 
