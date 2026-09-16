@@ -16,7 +16,7 @@ jobs:
   # ==========================================
   # 1. TEST
   # ==========================================
-      lint-test:
+  lint-test:
     name: Tests and Lint
     runs-on: ubuntu-latest
 
