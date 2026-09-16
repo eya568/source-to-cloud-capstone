@@ -30,6 +30,7 @@ def index():
 
 
 @app.route("/health")
+@app.route("/health")
 def health():
     try:
         conn = get_db_connection()
@@ -37,9 +38,17 @@ def health():
         cur.execute("SELECT 1;")
         cur.close()
         conn.close()
-        return jsonify({"status": "healthy", "db": "connected", "host": socket.gethostname()}), 200
+        return jsonify({
+            "status": "healthy",
+            "db": "connected",
+            "host": socket.gethostname(),
+        }), 200
     except Exception as e:
-        return jsonify({"status": "unhealthy", "db": "unreachable", "error": str(e)}), 503
+        return jsonify({
+            "status": "unhealthy",
+            "db": "unreachable",
+            "error": str(e),
+        }), 503
 
 
 if __name__ == "__main__":
